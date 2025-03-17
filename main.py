@@ -32,8 +32,12 @@ async def create_item(item: Item):
 async def update_item(item_id: int, item: Item):
     if not item.is_offer:
         return {"error": "El item no es una oferta"}
+    
     if not item.editorial:
         return {"error": "El item no tiene editorial"}
+    
+    if not item.name:
+        return {"error": "El item no tiene nombre"}
     
     return f"Item con id {item_id} actualizado con el nombre {item.name}"
 
